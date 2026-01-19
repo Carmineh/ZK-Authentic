@@ -1,0 +1,26 @@
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json # Opzionale: alcuni preferiscono committarlo, ma per esame puoi ignorarlo se vuoi repo pulita
+.env
+.env.local
+.env.*.local
+
+out
+out.code
+abi.json
+
+proving.key
+verification.key
+
+witness
+proof.json
+
+chain-data/
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+docker-compose.override.yml
