@@ -1,26 +1,61 @@
+# Dependencies
 node_modules/
 npm-debug.log
 yarn-error.log
-package-lock.json # Opzionale: alcuni preferiscono committarlo, ma per esame puoi ignorarlo se vuoi repo pulita
+package-lock.json
+
+# Environment Variables
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
 
-out
-out.code
-abi.json
+# ZoKrates outputs
+zokrates/out
+zokrates/out.code
+zokrates/out.r1cs
+zokrates/out.wtns
+zokrates/abi.json
+zokrates/proving.key
+zokrates/verification.key
+zokrates/witness
 
-proving.key
-verification.key
+# Hardhat files
+backend/cache/
+backend/artifacts/
+backend/typechain/
+backend/typechain-types/
+backend/coverage/
+backend/coverage.json
+backend/ignition/deployments/chain-31337/
 
-witness
-proof.json
-
+# Chain data
 chain-data/
+firefly-data/
 
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# IDE
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
+# Docker
 docker-compose.override.yml
+.dockerignore
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/

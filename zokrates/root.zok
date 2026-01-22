@@ -1,0 +1,17 @@
+import "hashes/sha256/512bitPacked" as sha256packed;
+
+struct ProductWitness {
+    field a;
+    field b;
+    field c;
+    field d;
+}
+
+def main(private ProductWitness product) -> field[2] {
+    
+    field[4] secretParts = [product.a, product.b, product.c, product.d];
+    
+    field[2] h = sha256packed(secretParts);
+
+    return h;
+}

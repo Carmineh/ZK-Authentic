@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ZK-Authentic</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="page">
+			<header class="hero">
+				<div class="badge">Zero-Knowledge Powered</div>
+				<h1>ZK-Authentic</h1>
+				<p>Authenticate products on-chain with privacy-preserving proofs.</p>
+			</header>
+
+			<section class="grid">
+				<div class="card brand-zone">
+					<div class="card-header">
+						<div class="pill pill-blue">Brand</div>
+						<h2>Register an asset</h2>
+						<p>Store the public hash of a genuine product on the blockchain.</p>
+					</div>
+
+					<div class="input-group">
+						<label for="hashInput">Product hash (public input)</label>
+						<input type="text" id="hashInput" placeholder="e.g. 0xabc...f5a5" />
+					</div>
+
+					<button onclick="registerProduct()" class="btn btn-primary">Register on chain</button>
+					<div id="registerStatus" class="status-box hidden"></div>
+				</div>
+
+				<div class="card user-zone">
+					<div class="card-header">
+						<div class="pill pill-green">Customer</div>
+						<h2>Verify authenticity</h2>
+						<p>Upload your zk-proof to validate the purchase without revealing secrets.</p>
+					</div>
+
+					<div class="input-group file-input">
+						<label for="proofFile">Upload <strong>proof.json</strong></label>
+						<input type="file" id="proofFile" accept=".json" />
+					</div>
+
+					<button onclick="verifyProduct()" class="btn btn-secondary">Verify authenticity</button>
+					<div id="verifyStatus" class="status-box hidden"></div>
+				</div>
+			</section>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+</html>
