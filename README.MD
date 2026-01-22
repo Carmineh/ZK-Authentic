@@ -1,11 +1,5 @@
 # ZK-Authentic
 
-A blockchain-based product authentication system using Zero-Knowledge Proofs.
-
----
-
-## What is this project?
-
 **ZK-Authentic** allows brands to register authentic products on-chain and customers to verify their purchases without revealing any sensitive information.
 
 The system has two main flows:
