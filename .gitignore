@@ -28,7 +28,6 @@ backend/typechain/
 backend/typechain-types/
 backend/coverage/
 backend/coverage.json
-backend/ignition/deployments/chain-31337/
 
 # Chain data
 chain-data/
