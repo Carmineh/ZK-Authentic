@@ -31,14 +31,6 @@ Benefits:
 
 ---
 
-## Documentation
-
-For a detailed explanation of the architecture, cryptographic primitives, and design choices, refer to the project documentation:
-
-**[docs/ZK-Authentic_Documentation.pdf](docs/ZK-Authentic_Documentation.pdf)**
-
----
-
 ## Project Structure
 
 ```
