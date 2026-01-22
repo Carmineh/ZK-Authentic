@@ -172,3 +172,70 @@ input[type="file"] {
 .success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
 .error   { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 .loading { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+
+/* Ledger Zone */
+.ledger-zone {
+    margin-top: 16px;
+}
+
+.pill-purple { background: #f5f3ff; color: #6d28d9; }
+
+.btn-tertiary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.15s ease, transform 0.1s ease;
+    background: #7c3aed;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.btn-tertiary:hover { background: #6d28d9; }
+.btn-tertiary:active { transform: translateY(1px); }
+
+.history-grid {
+    display: flex;
+    gap: 16px;
+}
+
+.history-column {
+    flex: 1;
+    background: #f9fafb;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.history-column h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin: 0 0 12px 0;
+}
+
+.ledger-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.ledger-list li {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 10px;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+
+.ledger-list li small {
+    display: block;
+    color: var(--muted);
+    margin-top: 4px;
+}

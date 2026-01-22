@@ -76,6 +76,36 @@ app.post("/verify", async (req, res) => {
 	}
 });
 
+// --- ROUTE 3: EVENT HISTORY ---
+app.get("/history", async (req, res) => {
+	try {
+		const registerFilter = registryContract.filters.ItemRegistered();
+		const registerEvents = await registryContract.queryFilter(registerFilter);
+
+		const verifyFilter = registryContract.filters.ItemVerified();
+		const verifyEvents = await registryContract.queryFilter(verifyFilter);
+		const history = {
+			registrations: registerEvents.map((e) => ({
+				hash: e.args[0].toString(),
+				note: e.args[1],
+				block: e.blockNumber.toString(),
+				tx: e.transactionHash,
+			})),
+			verifications: verifyEvents.map((e) => ({
+				verifier: e.args[0],
+				hash: e.args[1].toString(),
+				block: e.blockNumber.toString(),
+				tx: e.transactionHash,
+			})),
+		};
+
+		res.json(history);
+	} catch (error) {
+		console.error("History error:", error);
+		res.status(500).json({ error: "Error retrieving blockchain data" });
+	}
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
 	console.log(`Server ready on http://localhost:${PORT}`);

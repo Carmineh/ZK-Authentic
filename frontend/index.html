@@ -47,6 +47,31 @@
 					<div id="verifyStatus" class="status-box hidden"></div>
 				</div>
 			</section>
+
+			<div class="card ledger-zone">
+				<div class="card-header">
+					<div class="pill pill-purple">Ledger</div>
+					<h2>Public Registry</h2>
+					<p>Blockchain transparency: all recorded events on Firefly.</p>
+				</div>
+
+				<button onclick="loadHistory()" class="btn btn-tertiary">Refresh history</button>
+
+				<div class="history-grid">
+					<div class="history-column">
+						<h3>Registered Products</h3>
+						<ul id="registrationsList" class="ledger-list">
+							<li>Loading...</li>
+						</ul>
+					</div>
+					<div class="history-column">
+						<h3>Completed Verifications</h3>
+						<ul id="verificationsList" class="ledger-list">
+							<li>Loading...</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<script src="app.js"></script>

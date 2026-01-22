@@ -30,7 +30,7 @@ async function registerProduct() {
 	}
 }
 
-// --- FUNZIONE 2: VERIFICA ---
+// --- FUNCTION 2: VERIFICATION ---
 async function verifyProduct() {
 	const fileInput = document.getElementById("proofFile");
 	const statusBox = document.getElementById("verifyStatus");
@@ -47,10 +47,10 @@ async function verifyProduct() {
 
 	reader.onload = async function (e) {
 		try {
-			// 1. Leggiamo il JSON dal file caricato
+			// 1. Read JSON from uploaded file
 			const proofData = JSON.parse(e.target.result);
 
-			// 2. Inviamo al backend
+			// 2. Send to backend
 			const response = await fetch(`${API_URL}/verify`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -62,20 +62,71 @@ async function verifyProduct() {
 			if (data.verified) {
 				showStatus(statusBox, `AUTHENTIC. Verified on-chain.\nTx: ${data.txHash}`, "success");
 			} else {
-				showStatus(statusBox, `NOT AUTHENTIC or error: ${data.error}`, "error");
+				showStatus(statusBox, "NOT AUTHENTIC. Invalid proof.", "error");
 			}
 		} catch (error) {
 			console.error(error);
-			showStatus(statusBox, "Invalid JSON file or server offline.", "error");
+			showStatus(statusBox, "NOT AUTHENTIC. Invalid proof.", "error");
 		}
 	};
 
 	reader.readAsText(file);
 }
 
-// Funzione helper per mostrare messaggi
+async function loadHistory() {
+	const regList = document.getElementById("registrationsList");
+	const verList = document.getElementById("verificationsList");
+
+	try {
+		const response = await fetch(`${API_URL}/history`);
+		const data = await response.json();
+
+		// Clear lists
+		regList.innerHTML = "";
+		verList.innerHTML = "";
+
+		// Fill Registrations
+		if (data.registrations.length === 0) {
+			regList.innerHTML = "<li>No data found.</li>";
+		} else {
+			// Sort by most recent (reverse)
+			data.registrations.reverse().forEach((item) => {
+				const li = document.createElement("li");
+				const shortHash = item.hash.substring(0, 10) + "..." + item.hash.substring(60);
+				li.innerHTML = `
+                    <strong>Hash:</strong> ${shortHash}<br>
+                    <small>Block: ${item.block} | Tx: ${item.tx.substring(0, 10)}...</small>
+                `;
+				regList.appendChild(li);
+			});
+		}
+
+		// Fill Verifications
+		if (data.verifications.length === 0) {
+			verList.innerHTML = "<li>No data found.</li>";
+		} else {
+			data.verifications.reverse().forEach((item) => {
+				const li = document.createElement("li");
+				const shortHash = item.hash.substring(0, 10) + "...";
+				li.innerHTML = `
+                    <strong>Verified:</strong> ${shortHash}<br>
+                    <small>By: ${item.verifier.substring(0, 10)}... | Block: ${item.block}</small>
+                `;
+				verList.appendChild(li);
+			});
+		}
+	} catch (error) {
+		console.error(error);
+		alert("Unable to load history.");
+	}
+}
+
+// Helper function to show messages
 function showStatus(element, message, type) {
 	element.className = `status-box ${type}`;
 	element.innerText = message;
 	element.style.display = "block";
 }
+
+// Load history on page load
+window.onload = loadHistory;
