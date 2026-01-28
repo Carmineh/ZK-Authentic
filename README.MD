@@ -58,4 +58,4 @@ Progetto/
 
 ## License
 
-This project was developed for the _Security and Dependability_ course.
+This project was developed for the Data Security_ course 2025/26 University of Salerno.
