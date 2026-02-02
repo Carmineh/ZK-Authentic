@@ -1,0 +1,42 @@
+{
+  "inputs": [
+    {
+      "name": "secretID",
+      "public": false,
+      "type": "field"
+    },
+    {
+      "name": "modello",
+      "public": true,
+      "type": "field"
+    },
+    {
+      "name": "movimento",
+      "public": true,
+      "type": "field"
+    },
+    {
+      "name": "cassa",
+      "public": true,
+      "type": "field"
+    },
+    {
+      "name": "vetro",
+      "public": true,
+      "type": "field"
+    },
+    {
+      "name": "cinturino",
+      "public": true,
+      "type": "field"
+    },
+    {
+      "name": "quadrante",
+      "public": true,
+      "type": "field"
+    }
+  ],
+  "output": {
+    "type": "field"
+  }
+}

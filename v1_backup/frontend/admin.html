@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZK-Authentic | Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/libs/ethers.js"></script>
+    <script src="assets/libs/zokrates.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">Verifica</a> | 
+            <a href="admin.html" style="font-weight: bold;">Admin</a>
+        </div>
+
+        <h1>🛠️ Dashboard Amministrazione (Hybrid)</h1>
+        <p>1. Calcola l'Hash locale (CLI). 2. Incollalo qui per registrarlo.</p>
+        
+        <div id="status"></div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label>Digital Twin Hash (Output Zokrates CLI)</label>
+                <input type="text" id="manualHash" placeholder="Incolla l'hash decimale (es. 128392...)" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Note / Descrizione</label>
+                <input type="text" id="note" placeholder="Es. Rolex Submariner #1" required>
+            </div>
+
+            <button type="submit" id="btnRegister">Registra Orologio su Blockchain</button>
+        </form>
+
+        <hr>
+        <h3>Prodotti Registrati</h3>
+        <div id="productList" style="margin-top:20px;">
+            <!-- Lista popolata da JS -->
+        </div>
+    </div>
+
+    <script type="module" src="js/admin_app.js"></script>
+</body>
+</html>

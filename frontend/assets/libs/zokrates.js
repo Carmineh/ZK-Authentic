@@ -1,0 +1,1 @@
+Couldn't find the requested file /umd.min.js in zokrates-js.
