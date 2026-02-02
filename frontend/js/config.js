@@ -1,7 +1,7 @@
 // Configurazione centralizzata
 export const CONFIG = {
-    VERIFIER_ADDRESS: "0x0c25dcE631d0E3a3dcF32dd8B52874d795Ca88F5",
-    AUTHENTICITY_ADDRESS: "0x449d3C36635749a62ab01F8719DFfC13D6033CCc",
+    VERIFIER_ADDRESS: "0xa56Ad38d7645d6D5913013B240526938F3156EEA",
+    AUTHENTICITY_ADDRESS: "0x2502F1D47a57ed9cbe1C08b592daa1c0475d3c2A",
     RPC_URL: "http://127.0.0.1:5100",
     // Lista valori per le select box (specchio di constant.md)
     CONSTANTS: {

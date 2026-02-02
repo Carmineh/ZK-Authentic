@@ -15,7 +15,7 @@ async function main() {
   console.log(`Registering Product Hash: ${hash}`);
   
   // Indirizzo del contratto deployato
-  const AUTH_ADDRESS = "0x449d3C36635749a62ab01F8719DFfC13D6033CCc";
+  const AUTH_ADDRESS = "0x2502F1D47a57ed9cbe1C08b592daa1c0475d3c2A";
 
   const Authenticity = await hre.ethers.getContractFactory("Authenticity");
   const contract = Authenticity.attach(AUTH_ADDRESS);

@@ -25,8 +25,9 @@ backend/cache
 backend/deploy_output.txt
 backend/contract_address.txt
 
-# Zokrates temporary files (Optional, keep if you want to reuse compilation)
-# zokrates/out
-# zokrates/witness
-# zokrates/proving.key
-# zokrates/verification.key
+# Zokrates temporary files
+zokrates/out*
+zokrates/witness
+zokrates/*.key
+zokrates/abi.json
+zokrates/verifier.sol
