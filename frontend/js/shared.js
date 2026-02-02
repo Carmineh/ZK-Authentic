@@ -23,7 +23,7 @@ export function showStatus(message, type = "info") {
     
     statusDiv.style.display = "block";
     statusDiv.className = type === "error" ? "error" : "success";
-    statusDiv.innerText = message;
+    statusDiv.innerHTML = message;
     console.log(`[${type.toUpperCase()}] ${message}`);
 }
 
@@ -34,29 +34,8 @@ export async function getContractABI() {
     return json.abi;
 }
 
-// Inizializza Zokrates
-export async function initZokrates() {
-    try {
-        // window.zokrates è esposto dallo script UMD
-        // A volte può essere 'Zokrates' con la maiuscola o non caricato
-        const zokrates = window.zokrates || window.Zokrates;
-        
-        if (!zokrates) {
-            console.error("Window Zokrates keys:", Object.keys(window).filter(k => k.toLowerCase().includes("zok")));
-            throw new Error("Libreria Zokrates non trovata! Verifica la connessione internet.");
-        }
-
-        const zokratesProvider = await zokrates.initialize();
-        return zokratesProvider;
-    } catch (e) {
-        console.error("Zokrates init failed:", e);
-        throw e;
-    }
-}
-
-// Legge il file binario compilato 'out'
-export async function getZokratesArtifacts() {
-    const response = await fetch('assets/out');
-    const buffer = await response.arrayBuffer();
-    return new Uint8Array(buffer); // restituisce il programma compilato come array di byte
+export async function getVerifierABI() {
+    const response = await fetch('assets/VerifierABI.json');
+    const json = await response.json();
+    return json.abi;
 }

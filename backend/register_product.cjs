@@ -8,13 +8,14 @@ async function main() {
       return;
   }
 
-  const hash = args[0];
+  // Force BigInt to handle large uint256 values correctly
+  const hash = BigInt(args[0]); 
   const note = args[1] || "Registered via CLI";
 
   console.log(`Registering Product Hash: ${hash}`);
   
   // Indirizzo del contratto deployato
-  const AUTH_ADDRESS = "0xD485D55eEDDdE92436922e363CD7a3b96524630A";
+  const AUTH_ADDRESS = "0x449d3C36635749a62ab01F8719DFfC13D6033CCc";
 
   const Authenticity = await hre.ethers.getContractFactory("Authenticity");
   const contract = Authenticity.attach(AUTH_ADDRESS);

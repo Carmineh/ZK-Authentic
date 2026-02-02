@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const userAddr = await signer.getAddress();
 
             if (adminAddr.toLowerCase() !== userAddr.toLowerCase()) {
-                 document.body.innerHTML = "<h1>⛔ Accesso Negato: Solo Admin</h1>";
+                 document.body.innerHTML = "<div class='container'><h1>Accesso Negato</h1><p>Area riservata all'amministratore.</p><a href='index.html'>Torna alla Home</a></div>";
                  return;
             }
 
@@ -44,11 +44,12 @@ async function registerManualHash(contract) {
         if (!hash) throw new Error("Inserisci l'hash!");
 
         showStatus("Firma la transazione su Metamask...", "info");
+        // V2 Simple: registerProduct(hash, note)
         const tx = await contract.registerProduct(hash, note);
         showStatus("Transazione inviata...", "info");
         await tx.wait();
         
-        showStatus("✅ Successo! Prodotto Registrato.", "success");
+        showStatus("Successo! Prodotto Registrato.", "success");
         loadProducts(contract); // Refresh list
         
     } catch (e) {
@@ -61,8 +62,7 @@ async function loadProducts(contract) {
     const listDiv = document.getElementById("productList");
     listDiv.innerHTML = "<p>Caricamento prodotti...</p>";
 
-    // Fetch events ProductRegistered
-    // Filter: event ProductRegistered(uint256 indexed digitalTwinHash, string note);
+    // Fetch events ProductRegistered(uint256, string)
     const filter = contract.filters.ProductRegistered();
     const events = await contract.queryFilter(filter);
 
